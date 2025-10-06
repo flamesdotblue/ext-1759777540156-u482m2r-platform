@@ -1,28 +1,29 @@
-import { useState } from 'react'
+import React from 'react';
+import NavBar from './components/NavBar';
+import Hero from './components/Hero';
+import ChatWindow from './components/ChatWindow';
+import ProviderPanel from './components/ProviderPanel';
 
-function App() {
-  const [count, setCount] = useState(0)
-
+export default function App() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50 flex items-center justify-center">
-      <div className="bg-white p-8 rounded-lg shadow-lg">
-        <h1 className="text-3xl font-bold text-gray-800 mb-4">
-          Vibe Coding Platform
-        </h1>
-        <p className="text-gray-600 mb-6">
-          Your AI-powered development environment
-        </p>
-        <div className="text-center">
-          <button
-            onClick={() => setCount(count + 1)}
-            className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
-          >
-            Count is {count}
-          </button>
-        </div>
-      </div>
+    <div className="min-h-screen bg-neutral-950 text-neutral-100 flex flex-col">
+      <NavBar />
+      <main className="flex-1">
+        <Hero />
+        <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 -mt-16 relative z-10">
+          <div className="grid lg:grid-cols-[1fr_340px] gap-6">
+            <div className="bg-neutral-900/60 backdrop-blur border border-neutral-800 rounded-2xl p-2 shadow-xl">
+              <ChatWindow />
+            </div>
+            <div className="bg-neutral-900/60 backdrop-blur border border-neutral-800 rounded-2xl p-6 h-fit sticky top-6">
+              <ProviderPanel />
+            </div>
+          </div>
+        </section>
+      </main>
+      <footer className="py-6 text-center text-neutral-400 text-sm">
+        Built with Puter.js, React, and Tailwind CSS
+      </footer>
     </div>
-  )
+  );
 }
-
-export default App
